@@ -43,7 +43,7 @@ if (cluster.isMaster) {
     app.get('/', function(req, res) {
         res.render('index', {
             static_path: 'static',
-            theme: process.env.THEME || 'united',
+            theme: process.env.THEME || 'amelia',
             flask_debug: process.env.FLASK_DEBUG || 'false'
         });
     });
@@ -54,7 +54,7 @@ if (cluster.isMaster) {
             'name': {'S': req.body.name},
             'company': {'S': req.body.company},
             'follow_up': {'S': req.body.followUp},
-            'theme': {'S': req.body.theme}
+            'session': {'S': '1'}
         };
 
         ddb.putItem({
