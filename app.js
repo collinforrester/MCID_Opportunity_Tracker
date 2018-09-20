@@ -43,7 +43,7 @@ if (cluster.isMaster) {
     app.get('/', function(req, res) {
         res.render('index', {
             static_path: 'static',
-            theme: process.env.THEME || 'flatly',
+            theme: process.env.THEME || 'united',
             flask_debug: process.env.FLASK_DEBUG || 'false'
         });
     });
