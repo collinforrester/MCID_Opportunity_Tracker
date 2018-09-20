@@ -75,8 +75,7 @@ if (cluster.isMaster) {
                 sns.publish({
                     'Message': 'Name: ' + req.body.name + "\r\nEmail: " + req.body.email
                                         + "\r\nfollowUp: " + req.body.followUp
-                                        + "\r\nCompany: " + req.body.company
-                                        + "\r\nTheme: " + req.body.theme,
+                                        + "\r\nCompany: " + req.body.company,
                     'Subject': 'New user sign up!!!',
                     'TopicArn': snsTopic
                 }, function(err, data) {
