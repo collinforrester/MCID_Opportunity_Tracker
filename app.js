@@ -52,14 +52,15 @@ if (cluster.isMaster) {
         var item = {
             'email': {'S': req.body.email},
             'name': {'S': req.body.name},
-            'preview': {'S': req.body.previewAccess},
+            'company': {'S': req.body.company},
+            'follow_up': {'S': req.body.followUp},
             'theme': {'S': req.body.theme}
         };
 
         ddb.putItem({
             'TableName': ddbTable,
             'Item': item,
-            'Expected': { email: { Exists: false } }        
+            'Expected': { email: { Exists: false } }
         }, function(err, data) {
             if (err) {
                 var returnStatus = 500;
@@ -72,8 +73,9 @@ if (cluster.isMaster) {
                 console.log('DDB Error: ' + err);
             } else {
                 sns.publish({
-                    'Message': 'Name: ' + req.body.name + "\r\nEmail: " + req.body.email 
-                                        + "\r\nPreviewAccess: " + req.body.previewAccess 
+                    'Message': 'Name: ' + req.body.name + "\r\nEmail: " + req.body.email
+                                        + "\r\nfollowUp: " + req.body.followUp
+                                        + "\r\nCompany: " + req.body.company
                                         + "\r\nTheme: " + req.body.theme,
                     'Subject': 'New user sign up!!!',
                     'TopicArn': snsTopic
@@ -84,7 +86,7 @@ if (cluster.isMaster) {
                     } else {
                         res.status(201).end();
                     }
-                });            
+                });
             }
         });
     });
