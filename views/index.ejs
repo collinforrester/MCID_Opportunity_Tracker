@@ -20,13 +20,13 @@
 
     <div class="container">
       <div class="header">
-        <ul class="nav nav-pills pull-right">
+<!--        <ul class="nav nav-pills pull-right">
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#">About</a></li>
           <li><a href="#">Blog</a></li>
           <li><a href="#">Press</a></li>
-        </ul>
-        <h3 class="text-muted">Re:Invent Workshop Signup</h3>
+        </ul> -->
+        <h3 class="text-muted">Re:Invent 2018 Workshop</h3>
       </div>
 	  <% if (flask_debug === 'true') { %>
       <div class="alert alert-danger">
@@ -36,14 +36,14 @@
       <div id="signupSuccess" class="alert alert-success" style="display:none">
         <p id="signupSuccessText">Thanks for signing up! You'll be among the first to know when we launch.</p>
       </div>
-      <div id="signupDuplicate" class="alert alert-success" style="display:none">
-        <p id="signupDuplicateText">Fear not, you're already on the list! You'll be among the first to know when we launch.</p>
+      <div id="signupDuplicate" class="alert alert-info" style="display:none">
+        <p id="signupDuplicateText">Fear not, you're already on the list!</p>
       </div>
       <div id="signupError" class="alert alert-info" style="display:none">
         <p id="signupErrorText">Well this is embarrassing. It looks like we're having trouble getting you on the list.</p>
       </div>
       <div class="jumbotron">
-        <h1>Landing Zone Workshop Registration</h1><br><br>
+        <h1>Landing Zone Workshop Registration</h1><br>
         <p class="lead">Click the Registration button below to submit your contact information.<br><br>Workshop materials will be delivered via email.</p>
         <p><a class="btn btn-lg btn-success"  data-toggle="modal" href="#signupModal">Register</a></p>
       </div>
