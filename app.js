@@ -44,6 +44,7 @@ if (cluster.isMaster) {
         res.render('index', {
             static_path: 'static',
             theme: process.env.THEME || 'amelia',
+            session: process.env.SESSION || 'NoSessionID',
             flask_debug: process.env.FLASK_DEBUG || 'false'
         });
     });
@@ -74,7 +75,8 @@ if (cluster.isMaster) {
             } else {
                 sns.publish({
                     'Message': 'Name: ' + req.body.name + "\r\nEmail: " + req.body.email
-                                        + "\r\nfollowUp: " + req.body.followUp
+                                        + "\r\nSession: " + process.env.SESSION
+                                        + "\r\nFollow up: " + req.body.followUp
                                         + "\r\nCompany: " + req.body.company,
                     'Subject': 'New user sign up!!!',
                     'TopicArn': snsTopic
