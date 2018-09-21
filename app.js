@@ -54,7 +54,7 @@ if (cluster.isMaster) {
             'name': {'S': req.body.name},
             'company': {'S': req.body.company},
             'follow_up': {'S': req.body.followUp},
-            'session': {'S': '1'}
+            'session': {'S': process.env.SESSION}
         };
 
         ddb.putItem({
