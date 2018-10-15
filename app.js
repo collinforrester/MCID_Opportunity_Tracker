@@ -51,17 +51,17 @@ if (cluster.isMaster) {
 
     app.post('/signup', function(req, res) {
         var item = {
-            'email': {'S': req.body.email},
-            'name': {'S': req.body.name},
-            'company': {'S': req.body.company},
-            'follow_up': {'S': req.body.followUp},
-            'session': {'S': process.env.SESSION}
+            'Email': {'S': req.body.email},
+            'Name': {'S': req.body.name},
+            'Company': {'S': req.body.company},
+            'Follow_up': {'S': req.body.followUp},
+            'SessionID': {'S': process.env.SESSION}
         };
 
         ddb.putItem({
             'TableName': ddbTable,
             'Item': item,
-            'Expected': { email: { Exists: false } }
+            'Expected': { Email: { Exists: false } }
         }, function(err, data) {
             if (err) {
                 var returnStatus = 500;
