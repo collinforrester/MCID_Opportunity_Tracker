@@ -6,10 +6,11 @@ import csv
 client = boto3.client(
     'dynamodb',
     aws_access_key_id="AKIAJ6CFJHUVHZL7MAOQ",
-    aws_secret_access_key="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"
+    aws_secret_access_key="8Yn5gJu/Tip1+ZHpkQNDjUC0s/kVQ8zZZsMxG1r/",
+    region_name='us-west-2'
     )
 
-response = client.scan(TableName='awseb-e-fawmpbasuj-stack-StartupSignupsTable-1K4YIMBV9RRMD')
+response = client.scan(TableName='awseb-e-mujjjnzg4g-stack-StartupSignupsTable-RP7AAE2QBMEB')
 
 table_header=list(response['Items'][0].keys())
 
@@ -27,3 +28,5 @@ for item in response['Items']:
     row = [item[attrib]['S'] for attrib in table_header]
     csvwriter.writerow(row)
 data.close()
+
+print('Success! DDB table written to ddb_output.csv')
