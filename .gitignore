@@ -3,10 +3,5 @@
 # Elastic Beanstalk CLI Files
 .elasticbeanstalk/*
 
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
-
 *.ipynb
 *.csv
