@@ -10,7 +10,7 @@ client = boto3.client(
     region_name='us-west-2'
     )
 
-response = client.scan(TableName='awseb-e-mujjjnzg4g-stack-StartupSignupsTable-RP7AAE2QBMEB')
+response = client.scan(TableName='awseb-e-arj57dvdus-stack-StartupSignupsTable-1W801EE7OPKG2')
 
 table_header=list(response['Items'][0].keys())
 

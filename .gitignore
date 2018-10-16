@@ -3,6 +3,7 @@
 # Elastic Beanstalk CLI Files
 .elasticbeanstalk/*
 
+*.py
 *.ipynb
 *.csv
 
