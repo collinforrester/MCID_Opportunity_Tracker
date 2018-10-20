@@ -12,21 +12,26 @@ client = boto3.client(
 
 response = client.scan(TableName='awseb-e-arj57dvdus-stack-StartupSignupsTable-1W801EE7OPKG2')
 
-table_header=list(response['Items'][0].keys())
+if response['Count'] > 0:
 
-# open a file for writing
-data = open('ddb_output.csv', 'w')
+    table_header=list(response['Items'][0].keys())
 
-# create the csv writer object
-csvwriter = csv.writer(data)
-count = 0
-for item in response['Items']:
-    if count == 0:
-        header = table_header
-        csvwriter.writerow(header)
-        count += 1
-    row = [item[attrib]['S'] for attrib in table_header]
-    csvwriter.writerow(row)
-data.close()
+    # open a file for writing
+    data = open('ddb_output.csv', 'w')
 
-print('Success! DDB table written to ddb_output.csv')
+    # create the csv writer object
+    csvwriter = csv.writer(data)
+    count = 0
+    for item in response['Items']:
+        if count == 0:
+            header = table_header
+            csvwriter.writerow(header)
+            count += 1
+        row = [item[attrib]['S'] for attrib in table_header]
+        csvwriter.writerow(row)
+    data.close()
+
+    print('Success! DDB table written to ddb_output.csv')
+
+else:
+    print('Dynamo table is empty. No output written to disk.')

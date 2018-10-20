@@ -27,6 +27,9 @@ if (cluster.isMaster) {
     var express = require('express');
     var bodyParser = require('body-parser');
 
+    var date = new Date();
+    // var hours = date.getHours();
+
     AWS.config.region = process.env.REGION
 
     var sns = new AWS.SNS();
@@ -55,7 +58,8 @@ if (cluster.isMaster) {
             'Name': {'S': req.body.name},
             'Company': {'S': req.body.company},
             'Follow_up': {'S': req.body.followUp},
-            'SessionID': {'S': process.env.SESSION}
+            'SessionID': {'S': process.env.SESSION},
+            'DateTime': {'S': date.getHours()}
         };
 
         ddb.putItem({
