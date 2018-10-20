@@ -27,8 +27,8 @@ if (cluster.isMaster) {
     var express = require('express');
     var bodyParser = require('body-parser');
 
-    var date = new Date();
-    // var hours = date.getHours();
+    var dt = new Date();
+    // var utcDate = dt.toUTCString();
 
     AWS.config.region = process.env.REGION
 
@@ -59,7 +59,7 @@ if (cluster.isMaster) {
             'Company': {'S': req.body.company},
             'Follow_up': {'S': req.body.followUp},
             'SessionID': {'S': process.env.SESSION},
-            'DateTime': {'S': date.getHours()}
+            'DateTime': {'S': dt.toUTCString()}
         };
 
         ddb.putItem({
