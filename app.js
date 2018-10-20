@@ -27,9 +27,6 @@ if (cluster.isMaster) {
     var express = require('express');
     var bodyParser = require('body-parser');
 
-    var dt = new Date();
-    // var utcDate = dt.toUTCString();
-
     AWS.config.region = process.env.REGION
 
     var sns = new AWS.SNS();
@@ -53,13 +50,15 @@ if (cluster.isMaster) {
     });
 
     app.post('/signup', function(req, res) {
+        var dt = new Date();
+        var utcDate = dt.toUTCString();
         var item = {
             'Email': {'S': req.body.email},
             'Name': {'S': req.body.name},
             'Company': {'S': req.body.company},
             'Follow_up': {'S': req.body.followUp},
             'SessionID': {'S': process.env.SESSION},
-            'DateTime': {'S': dt.toUTCString()}
+            'DateTime': {'S': utcDate}
         };
 
         ddb.putItem({
