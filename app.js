@@ -2,7 +2,7 @@
 var cluster = require('cluster');
 
 // Include uuid
-//const uuidv4 = require('uuid/v4');
+const uuidv4 = require('uuid/v4');
 
 // Code to run if we're in the master process
 if (cluster.isMaster) {
