@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Landing Zone Workshop</title>
+    <title>AWS Immersion Day</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<%= static_path + "/bootstrap/css/theme/" + theme + "/bootstrap.css" %>" rel="stylesheet">
@@ -26,7 +26,7 @@
           <li><a href="#">Blog</a></li>
           <li><a href="#">Press</a></li>
         </ul>    -->
-        <h3 class="text-muted">Immersion Day <%= session %></h3>
+        <h3 class="text-muted">AWS Immersion Day <%= session %></h3>
       </div>
 	  <% if (flask_debug === 'true') { %>
       <div class="alert alert-danger">
@@ -59,7 +59,7 @@
            <div class="modal-content">
              <div class="modal-header">
                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-               <h4 class="modal-title">Please enter your contact details below.</h4>
+               <h4 class="modal-title">Please enter your workload idea details below.</h4>
              </div>
              <div class="modal-body">
                <form id="signupForm" role="form">
@@ -80,10 +80,9 @@
                    <label for="email">What's your great idea?<font color="red"><sup> *</sup></font></label>
                    <input type="text" class="form-control" id="idea" name="idea" placeholder="I want to build...">
                  </div>
-                 </div>
              </div>
              <div class="modal-footer">
-               <button id="signup" type="button" class="btn btn-primary">Submit!</button>
+               <button id="submit" type="button" class="btn btn-primary">Submit!</button>
              </div>
            </div><!-- /.modal-content -->
          </div><!-- /.modal-dialog -->
