@@ -62,7 +62,7 @@ if (cluster.isMaster) {
             'Company': {'S': req.body.company},
             'Idea': {'S': req.body.idea},
             'SessionID': {'S': process.env.SESSION},
-            'UUID': {'S': uuid}
+            'UUID': {'S': uuid},
             'DateTime': {'S': utcDate}
         };
 
