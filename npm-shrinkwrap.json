@@ -24,6 +24,11 @@
         }
       }
     },
+    "uuid": {
+      "version": "3.3.2",
+      "from": "uuid@latest",
+      "resolved": "https://registry.npmjs.org/uuid/-/uuid-3.3.2.tgz"
+    },
     "body-parser": {
       "version": "1.13.2",
       "from": "body-parser@latest",
