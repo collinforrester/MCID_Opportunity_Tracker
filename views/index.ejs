@@ -33,19 +33,19 @@
       	Flask is in debug mode. This is not safe for production.
       </div>
       <% } %>
-      <div id="signupSuccess" class="alert alert-success" style="display:none">
-        <p id="signupSuccessText">Thanks for submitting!</p>
+      <div id="ideaSuccess" class="alert alert-success" style="display:none">
+        <p id="ideaSuccessText">Thanks for submitting!</p>
       </div>
-      <div id="signupDuplicate" class="alert alert-info" style="display:none">
-        <p id="signupDuplicateText">Fear not, you're already on the list!</p>
+      <div id="ideaDuplicate" class="alert alert-info" style="display:none">
+        <p id="ideaDuplicateText">Fear not, you're already on the list!</p>
       </div>
-      <div id="signupError" class="alert alert-warning" style="display:none">
-        <p id="signupErrorText"><b>There was an error registering.</b><br><br>Please check all fields were entered and try again.</p>
+      <div id="ideaError" class="alert alert-warning" style="display:none">
+        <p id="ideaErrorText"><b>There was an error registering.</b><br><br>Please check all fields were entered and try again.</p>
       </div>
       <div class="jumbotron">
         <h1>Immersion Day Idea Tracker</h1><br>
         <p class="lead">Click the button below to submit your idea.<br><br>For each entry, we'll enter you in the raffle to win a prize.</p>
-        <p><a class="btn btn-lg btn-success"  data-toggle="modal" href="#signupModal">Submit Idea</a></p>
+        <p><a class="btn btn-lg btn-success"  data-toggle="modal" href="#ideaModal">Submit Idea</a></p>
       </div>
 
 
@@ -54,7 +54,7 @@
       </div>
 
       <!-- Modal -->
-       <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModal" aria-hidden="true">
+       <div class="modal fade" id="ideaModal" tabindex="-1" role="dialog" aria-labelledby="ideaModal" aria-hidden="true">
          <div class="modal-dialog">
            <div class="modal-content">
              <div class="modal-header">
@@ -62,7 +62,7 @@
                <h4 class="modal-title">Please enter your workload idea details below.</h4>
              </div>
              <div class="modal-body">
-               <form id="signupForm" role="form">
+               <form id="ideaForm" role="form">
                  <input type="hidden" id="theme" name="theme" value="<%= theme %>"/>
                  <div class="form-group">
                    <label for="name">Full Name<font color="red"><sup> *</sup></font></label>
@@ -82,7 +82,7 @@
                  </div>
              </div>
              <div class="modal-footer">
-               <button id="submit" type="button" class="btn btn-primary">Submit!</button>
+               <button id="idea" type="button" class="btn btn-primary">Submit!</button>
              </div>
            </div><!-- /.modal-content -->
          </div><!-- /.modal-dialog -->
@@ -94,23 +94,23 @@
     <script src="<%= static_path + "/bootstrap/js/bootstrap.min.js" %>"></script>
     <script type="text/javascript">
     $(document).ready(function() {
-      $("#signup").click(function() {
-        $.post( "/signup", $("#signupForm").serialize(),
+      $("#idea").click(function() {
+        $.post( "/idea", $("#ideaForm").serialize(),
                 function(data) {
-                  $("#signupSuccess").show();
+                  $("#ideaSuccess").show();
                 }
               )
               .error(function(xhr) {
                 switch(xhr.status) {
                   case 409:
-                    $("#signupDuplicate").show();
+                    $("#ideaDuplicate").show();
                     break;
                   default:
-                    $("#signupError").show();
+                    $("#ideaError").show();
                 }
               })
               .always(function() {
-                $("#signupModal").modal('hide');
+                $("#ideaModal").modal('hide');
               });
       })
     })
