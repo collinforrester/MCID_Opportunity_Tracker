@@ -55,7 +55,7 @@ if (cluster.isMaster) {
     app.post('/idea', function(req, res) {
         var dt = new Date();
         var utcDate = dt.toUTCString();
-        var uuid = uuidv4();
+        var uuid = uuid.v4();
         var item = {
             'Email': {'S': req.body.email},
             'Name': {'S': req.body.name},
