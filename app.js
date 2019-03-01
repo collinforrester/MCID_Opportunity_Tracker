@@ -56,7 +56,7 @@ if (cluster.isMaster) {
             'Email': {'S': req.body.email},
             'Name': {'S': req.body.name},
             'Company': {'S': req.body.company},
-            'Follow_up': {'S': req.body.followUp},
+            'Idea': {'S': req.body.idea},
             'SessionID': {'S': process.env.SESSION},
             'DateTime': {'S': utcDate}
         };
@@ -79,9 +79,8 @@ if (cluster.isMaster) {
                 sns.publish({
                     'Message': 'Name: ' + req.body.name + "\r\nEmail: " + req.body.email
                                         + "\r\nSession: " + process.env.SESSION
-                                        + "\r\nFollow up: " + req.body.followUp
                                         + "\r\nCompany: " + req.body.company,
-                    'Subject': 'New user sign up!!!',
+                    'Subject': 'Idea Submitted!!!',
                     'TopicArn': snsTopic
                 }, function(err, data) {
                     if (err) {
