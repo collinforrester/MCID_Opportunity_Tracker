@@ -32,8 +32,8 @@ if (cluster.isMaster) {
     var sns = new AWS.SNS();
     var ddb = new AWS.DynamoDB();
 
-    var ddbTable =  process.env.STARTUP_SIGNUP_TABLE;
-    var snsTopic =  process.env.NEW_SIGNUP_TOPIC;
+    var ddbTable =  process.env.IDEAS_TABLE;
+    var snsTopic =  process.env.IDEAS_TOPIC;
     var app = express();
 
     app.set('view engine', 'ejs');
@@ -49,7 +49,7 @@ if (cluster.isMaster) {
         });
     });
 
-    app.post('/signup', function(req, res) {
+    app.post('/idea', function(req, res) {
         var dt = new Date();
         var utcDate = dt.toUTCString();
         var item = {
