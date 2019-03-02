@@ -65,18 +65,6 @@ if (cluster.isMaster) {
             'DateTime': {'S': utcDate}
         };
 
-    // app.post('/idea', function(req, res) {
-    //     var dt = new Date();
-    //     var utcDate = dt.toUTCString();
-    //     var item = {
-    //         'Email': {'S': req.body.email},
-    //         'Name': {'S': req.body.name},
-    //         'Company': {'S': req.body.company},
-    //         'Idea': {'S': req.body.idea},
-    //         'SessionID': {'S': process.env.SESSION},
-    //         'DateTime': {'S': utcDate}
-    //     };
-
         ddb.putItem({
             'TableName': ddbTable,
             'Item': item,
