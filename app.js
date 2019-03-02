@@ -1,9 +1,6 @@
 // Include the cluster module
 var cluster = require('cluster');
 
-// Include uuid
-const uuidv4 = require('uuid');
-
 // Code to run if we're in the master process
 if (cluster.isMaster) {
 
@@ -29,6 +26,8 @@ if (cluster.isMaster) {
     var AWS = require('aws-sdk');
     var express = require('express');
     var bodyParser = require('body-parser');
+    // Include uuid
+    var uuidv4 = require('uuid');
 
     AWS.config.region = process.env.REGION
 
@@ -52,31 +51,31 @@ if (cluster.isMaster) {
         });
     });
 
-    // app.post('/idea', function(req, res) {
-    //     var dt = new Date();
-    //     var utcDate = dt.toUTCString();
-    //     var uuid = uuidv4.v4();
-    //     var item = {
-    //         'Email': {'S': req.body.email},
-    //         'Name': {'S': req.body.name},
-    //         'Company': {'S': req.body.company},
-    //         'Idea': {'S': req.body.idea},
-    //         'SessionID': {'S': process.env.SESSION},
-    //         'UUID': {'S': uuid},
-    //         'DateTime': {'S': utcDate}
-    //     };
-
     app.post('/idea', function(req, res) {
         var dt = new Date();
         var utcDate = dt.toUTCString();
+        var uuid = uuidv4.v4();
         var item = {
             'Email': {'S': req.body.email},
             'Name': {'S': req.body.name},
             'Company': {'S': req.body.company},
             'Idea': {'S': req.body.idea},
             'SessionID': {'S': process.env.SESSION},
+            'UUID': {'S': uuid},
             'DateTime': {'S': utcDate}
         };
+
+    // app.post('/idea', function(req, res) {
+    //     var dt = new Date();
+    //     var utcDate = dt.toUTCString();
+    //     var item = {
+    //         'Email': {'S': req.body.email},
+    //         'Name': {'S': req.body.name},
+    //         'Company': {'S': req.body.company},
+    //         'Idea': {'S': req.body.idea},
+    //         'SessionID': {'S': process.env.SESSION},
+    //         'DateTime': {'S': utcDate}
+    //     };
 
         ddb.putItem({
             'TableName': ddbTable,
