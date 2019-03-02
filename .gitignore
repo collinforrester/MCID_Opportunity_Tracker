@@ -3,11 +3,11 @@
 # Elastic Beanstalk CLI Files
 .elasticbeanstalk/*
 
-*.py
-*.ipynb
+# Output from Dynamo Table
 *.csv
 
-
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/*
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
