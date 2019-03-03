@@ -17,9 +17,10 @@ Clone this repository to your laptop.
 You will want to modify the source code for your event and your environment.
   1. Modify '.ebextensions/options.config' file:
      * Row 3: Update your email to be notified via SNS when new items are added to the table.
-     * Row 6: Update the SESSION value to identify the event name.  The SESSION variable is used in the website title as well as a field recorded in DynamoDB.
+     * Row 6: Update the SESSION value to identify the event name & date.  The SESSION variable is used in the website title as well as a field recorded in DynamoDB.
   2. To further modify event information (for example if the event is not an Immersion Day), modify the '/views/index.ejs' file:
      * Rows 9, 29, and 46 reference "Immersion Day"
+  3. Form data capture and puts into DynamoDB are configured in 'app.js' file.
 
 While not required for deploying the application, to use the Python scripts to write the DynamoDB table to CSV and pick a raffle winner, you will additionally need to configure Systems Manager Parameter Store with your database IAM user credentials and update the DynamoDB table name in the Python script.  
 **Best Practice: Never store your credentials in the code!**
