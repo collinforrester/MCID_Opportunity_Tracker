@@ -40,7 +40,7 @@ You can deploy the application using the following steps:
   4. Run `eb create --instance_profile aws-elasticbeanstalk-sample-role` to begin the creation of your environment.
      * Enter the environment name of your choice.
      * Enter the CNAME prefix you want to use for this environment.
-  5. After modifications to the source code, run `eb deploy` to update the environment.
+  5. After modifications to the source code, commit changes to git local repo (necessary to commit, not necessary to push), then run `eb deploy` to update the EB environment with the committed changes in git.
   6. Once the environment creation process completes, run `eb open` to open the application in a browser.
   7. Run `eb terminate --all` to clean up.
 
