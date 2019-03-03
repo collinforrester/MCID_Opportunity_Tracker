@@ -1,10 +1,8 @@
 # Multi-customer Immersion Day Idea Tracker
 When holding multi-customer events, it can be difficult to present at the same time as tracking customer ideas for new workloads or for follow-up for deep dive conversations.  This tool is designed to allow a "self-service" method for customers at AWS events to enter their own ideas throughout the event.  Customers can enter as many ideas as they would like.  One concept to encourage more idea capture is to hold a raffle for a prize at the end of the day, randomly chosen from the list of ideas entered.  
 
-Homepage
 <img src="misc/homepage.png" alt="Home Page" width="400"/>
 
-Entry Form
 <img src="misc/form.png" alt="Entry Form" width="300"/>
 
 
