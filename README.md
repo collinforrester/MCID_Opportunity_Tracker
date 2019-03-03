@@ -1,9 +1,11 @@
 # Multi-customer Immersion Day Idea Tracker
 When holding multi-customer events, it can be difficult to present at the same time as tracking customer ideas for new workloads or for follow-up for deep dive conversations.  This tool is designed to allow a "self-service" method for customers at AWS events to enter their own ideas throughout the event.  Customers can enter as many ideas as they would like.  One concept to encourage more idea capture is to hold a raffle for a prize at the end of the day, randomly chosen from the list of ideas entered.  
 
-![](misc/homepage.png)
+<img src="misc/homepage.png" alt="Home Page" width="400"/>
+Homepage
 
-![](misc/form.png)
+<img src="misc/form.png" alt="Entry Form" width="300"/>
+Entry Form
 
 The architecture for this application is very simple.  Elastic Beanstalk is used to stand up a t2.micro EC2 instance behind a load balancer and a DynamoDB for backend storage.  The t2.micro hosts a Node.js Express website form app which records entries to the database.  When the form is submitted, a SNS email notification is triggered to notify the subscriber that a new entry was received.  Data can be retrieved from the database via the standalone Python application, which also selects an entry at random as the winner.
 
