@@ -21,12 +21,14 @@ You will want to modify the source code for your event and your environment.
   2. To further modify event information (for example if the event is not an Immersion Day), modify the '/views/index.ejs' file:
      * Rows 9, 29, and 46 reference "Immersion Day"
 
-While not required for deploying the application, to use the Python scripts to write the DynamoDB table to CSV, you will additionally need to configure Systems Manager Parameter Store with your database IAM user credentials.  
+While not required for deploying the application, to use the Python scripts to write the DynamoDB table to CSV and pick a raffle winner, you will additionally need to configure Systems Manager Parameter Store with your database IAM user credentials and update the DynamoDB table name in the Python script.  
 **Best Practice: Never store your credentials in the code!**
-  1. Create a Secure String type Parameter named 'DynamoDB_Reader_User_Creds'.
-  2. The value of the Paramter should be in the format
-     * {"Access key ID": "<your access key>", "Secret access key": "<your secret key>"}
+  1. Recommended: create a new programmatic-access-only IAM user with DynamoDB read-only AWS-managed policy.
+  2. Create a SSM Secure String type Parameter with the key `DynamoDB_Reader_User_Creds`.
+  3. The value of the SSM Parameter should be in the format
+     * `{"Access key ID": "<your access key>", "Secret access key": "<your secret key>"}`
      * Note the use of double-quotes in the JSON value.
+  4. The DynamoDB table name is hard-coded in the Python script.  Edit line 8 of the file 'scan_ddb_to_csv_pick_winner.py' after the table is created by Elastic Beanstalk.
 
 
 ## Deploy the application
