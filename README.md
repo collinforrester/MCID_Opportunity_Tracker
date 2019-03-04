@@ -42,7 +42,8 @@ You can deploy the application using the following steps:
      * Enter the CNAME prefix you want to use for this environment.
   5. After modifications to the source code, commit changes to git local repo (necessary to commit, not necessary to push), then run `eb deploy` to update the EB environment with the committed changes in git.
   6. Once the environment creation process completes, run `eb open` to open the application in a browser.
-  7. Run `eb terminate --all` to clean up.
+  7. Run `eb terminate --all` to clean up.  
+  **Note: the DynamoDB table will be deleted by this command.**  Please ensure data is exported from DynamoDB before terminating the environment.
 
 
 ## This tool was based on the [AWS Elastic Beanstalk Express Sample App](https://github.com/aws-samples/eb-node-express-sample)
