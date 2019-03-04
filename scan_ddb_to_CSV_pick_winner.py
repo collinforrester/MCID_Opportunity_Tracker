@@ -42,7 +42,7 @@ if ddbresponse['Count'] > 0:
     # create the csv writer object
     csvwriter = csv.writer(data)
     count = 0
-    for item in response['Items']:
+    for item in ddbresponse['Items']:
         if count == 0:
             header = table_header
             csvwriter.writerow(header)
