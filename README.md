@@ -14,7 +14,7 @@ The Elastic Beanstalk environment is easy to deploy, and is intended to be used 
 ## Customization instructions and Prerequisite setup
 Clone this repository to your laptop.
 
-You will want to modify the source code for your event and your environment.
+You will want to modify the source code for your event and your AWS environment.
   1. Modify '.ebextensions/options.config' file:
      * Row 3: Update your email to be notified via SNS when new items are added to the table.
      * Row 6: Update the SESSION value to identify the event name & date.  The SESSION variable is used in the website title as well as a field recorded in DynamoDB.
@@ -46,5 +46,4 @@ You can deploy the application using the following steps:
   **Note: the DynamoDB table will be deleted by this command.**  Please ensure data is exported from DynamoDB before terminating the environment.
 
 
-## This tool was based on the [AWS Elastic Beanstalk Express Sample App](https://github.com/aws-samples/eb-node-express-sample)
-This sample application uses the [Express](https://expressjs.com/) framework and [Bootstrap](http://getbootstrap.com/) to build a simple, scalable customer signup form that is deployed to [AWS Elastic Beanstalk](http://aws.amazon.com/elasticbeanstalk/). The application stores data in [Amazon DynamoDB](http://aws.amazon.com/dynamodb/) and publishes notifications to the [Amazon Simple Notification Service (SNS)](http://aws.amazon.com/sns/) when a customer fills out the form.
+### This tool was based on the [AWS Elastic Beanstalk Express Sample App](https://github.com/aws-samples/eb-node-express-sample)
