@@ -6,7 +6,9 @@ When holding multi-customer events, it can be difficult to present at the same t
 <img src="misc/form.png" alt="Entry Form" width="300"/>
 
 
-The architecture for this application is very simple.  Elastic Beanstalk is used to stand up a t2.micro EC2 instance behind a load balancer and a DynamoDB for backend storage.  The t2.micro hosts a Node.js Express website form app which records entries to the database.  When the form is submitted, a SNS email notification is triggered to notify the subscriber that a new entry was received.  Data can be retrieved from the database via the standalone Python application, which also selects an entry at random as the winner.
+The architecture for this application is very simple.  Elastic Beanstalk is used to stand up a t2.micro EC2 instance behind a load balancer and a DynamoDB for backend storage.  The t2.micro hosts a Node.js Express website form app which records entries to the database.  When the form is submitted, a SNS message is published to the EB environment SNS topic.  The SNS topic is automatically subscribed to the email in the configuration notification as well as published to SQS for further message processing if desired.  Data can be retrieved from the database via the standalone Python application, which also selects an entry at random as the winner.
+
+<img src="misc/MCID_Opp_Arch.png" alt="Architecture" width="300"/>
 
 The Elastic Beanstalk environment is easy to deploy, and is intended to be used for single-serving events.  You can customize the deployment a day or two before the event, and then tear it down afterwards.
 
