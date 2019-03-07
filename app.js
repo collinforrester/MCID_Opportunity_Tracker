@@ -81,9 +81,11 @@ if (cluster.isMaster) {
                 console.log('DDB Error: ' + err);
             } else {
                 sns.publish({
-                    'Message': 'Name: ' + req.body.name + "\r\nEmail: " + req.body.email
+                    'Message': 'Name: ' + req.body.name
+                                        + "\r\nEmail: " + req.body.email
                                         + "\r\nSession: " + process.env.SESSION
-                                        + "\r\nCompany: " + req.body.company,
+                                        + "\r\nCompany: " + req.body.company
+                                        + "\r\nIdea: " + req.body.idea,
                     'Subject': 'Idea Submitted!!!',
                     'TopicArn': snsTopic
                 }, function(err, data) {
