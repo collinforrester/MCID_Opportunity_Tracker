@@ -39,7 +39,7 @@ You can deploy the application using the following steps:
   1. [Install the AWS Elastic Beanstalk Command Line Interface (CLI)](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html).
   2. Create an IAM Instance Profile named **aws-elasticbeanstalk-ec2-role** with the policy in [aws-elasticbeanstalk-ec2-role-policy.md](aws-elasticbeanstalk-ec2-role-policy.md). For more information on how to create an IAM Instance Profile, see [Create an IAM Instance Profile for Your Amazon EC2 Instances](https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-create-iam-instance-profile.html).
   3. Run `eb init -r <region> -p "Node.js"` to initialize the folder for use with the CLI. Replace `<region>` with a region identifier such as `us-west-2` (see [Regions and Endpoints](https://docs.amazonaws.cn/en_us/general/latest/gr/rande.html#elasticbeanstalk_region) for a full list of region identifiers).
-  4. Run `eb create --instance_profile aws-elasticbeanstalk-sample-role` to begin the creation of your environment.
+  4. Run `eb create --instance_profile aws-elasticbeanstalk-ec2-role` to begin the creation of your environment.
      * Enter the environment name of your choice.
      * Enter the CNAME prefix you want to use for this environment.
   5. After modifications to the source code, commit changes to git local repo (necessary to commit, not necessary to push), then run `eb deploy` to update the EB environment with the committed changes in git.
