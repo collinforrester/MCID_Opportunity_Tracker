@@ -34,19 +34,23 @@ While not required for deploying the application, to use the Python scripts to w
   4. The DynamoDB table name is hard-coded in the Python script.  Edit line 8 of the file 'scan_ddb_to_csv_pick_winner.py' after the table is created by Elastic Beanstalk.
 
 
-## Deploy the application
+## Deploy the application via EB CLI (Recommended)
 You can deploy the application using the following steps:
   1. [Install the AWS Elastic Beanstalk Command Line Interface (CLI)](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html).
-  2. Create an IAM Instance Profile named **aws-elasticbeanstalk-sample-role** with the policy in [iam_policy.json](iam_policy.json). For more information on how to create an IAM Instance Profile, see [Create an IAM Instance Profile for Your Amazon EC2 Instances](https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-create-iam-instance-profile.html).
+  2. Create an IAM Instance Profile named **aws-elasticbeanstalk-sample-role** with the policy in [aws-elasticbeanstalk-ec2-role-policy.md](aws-elasticbeanstalk-ec2-role-policy.md). For more information on how to create an IAM Instance Profile, see [Create an IAM Instance Profile for Your Amazon EC2 Instances](https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-create-iam-instance-profile.html).
   3. Run `eb init -r <region> -p "Node.js"` to initialize the folder for use with the CLI. Replace `<region>` with a region identifier such as `us-west-2` (see [Regions and Endpoints](https://docs.amazonaws.cn/en_us/general/latest/gr/rande.html#elasticbeanstalk_region) for a full list of region identifiers).
   4. Run `eb create --instance_profile aws-elasticbeanstalk-sample-role` to begin the creation of your environment.
      * Enter the environment name of your choice.
      * Enter the CNAME prefix you want to use for this environment.
-     * Note: See [IAM EC2 Service Role  Policy](/aws-elasticbeanstalk-sample-role-policy.md) for policy details setup by this 'eb create' command, or if manually setting up Beanstalk environment.
   5. After modifications to the source code, commit changes to git local repo (necessary to commit, not necessary to push), then run `eb deploy` to update the EB environment with the committed changes in git.
   6. Once the environment creation process completes, run `eb open` to open the application in a browser.
   7. Run `eb terminate --all` to clean up.  
   **Note: the DynamoDB table will be deleted by this command.**  Please ensure data is exported from DynamoDB before terminating the environment.
 
+
+## Deploy the application via console
+You can deploy the application using the following steps:
+  1. Lorem Ipsum
+  2. Lorem Ipsum
 
 ### This tool was based on the [AWS Elastic Beanstalk Express Sample App](https://github.com/aws-samples/eb-node-express-sample)
