@@ -10,7 +10,8 @@ The architecture for this application is very simple.  Elastic Beanstalk is used
 
 <img src="misc/MCID_Opp_Arch.png" alt="Architecture" width="300"/>
 
-The Elastic Beanstalk environment is easy to deploy, and is intended to be used for single-serving events.  You can customize the deployment a day or two before the event, and then tear it down afterwards.
+The Elastic Beanstalk environment is easy to deploy, and is intended to be used for single-serving events.  You can customize the deployment a day or two before the event, and then tear it down afterwards.  
+**Note:** As configured here, terminating the Elastic Beanstalk environment will delete your DynamoDB table as well.  Make sure you have exported all data from DynamoDB before terminating the environment.
 
 
 ## Customization instructions and Prerequisite setup
@@ -43,9 +44,12 @@ You can deploy the application using the following steps:
      * Enter the environment name of your choice.
      * Enter the CNAME prefix you want to use for this environment.
   5. After modifications to the source code, commit changes to git local repo (necessary to commit, not necessary to push), then run `eb deploy` to update the EB environment with the committed changes in git.
-  6. Once the environment creation process completes, run `eb open` to open the application in a browser.
-  7. Run `eb terminate --all` to clean up.  
+  6. Find the CloudFormation Stack that Elastic Beanstalk sets up during deployment.  The 'Outputs' section will provide the CloudFront DNS name so your end-users will connect to the tool via HTTPS.  (Recommendation is to use a link shortening service like [Bit.ly](http://bit.ly) to create a more friendly URL for your end-users.)
+
+## Deleting the EB environment via CLI
+  1. Run `eb terminate --all` to clean up.  
   **Note: the DynamoDB table will be deleted by this command.**  Please ensure data is exported from DynamoDB before terminating the environment.
+
 
 
 ## Deploy the application via console
