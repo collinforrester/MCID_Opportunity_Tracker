@@ -9,6 +9,8 @@
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/*
 
+
+
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml

@@ -39,13 +39,14 @@ While not required for deploying the application, to use the Python scripts to w
 You can deploy the application using the following steps:
   1. [Install the AWS Elastic Beanstalk Command Line Interface (CLI)](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html).
   2. Create an IAM Instance Profile named **aws-elasticbeanstalk-ec2-role** with the policy in [aws-elasticbeanstalk-ec2-role-policy.md](aws-elasticbeanstalk-ec2-role-policy.md). For more information on how to create an IAM Instance Profile, see [Create an IAM Instance Profile for Your Amazon EC2 Instances](https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-create-iam-instance-profile.html).
-  3. Run `eb init -r <region> -p "Node.js"` to initialize the folder for use with the CLI. Replace `<region>` with a region identifier such as `us-west-2` (see [Regions and Endpoints](https://docs.amazonaws.cn/en_us/general/latest/gr/rande.html#elasticbeanstalk_region) for a full list of region identifiers).
-  4. Run `eb create --instance_profile aws-elasticbeanstalk-ec2-role` to begin the creation of your environment.
+  3. Make sure you have at least made a local Git `git commit` of your code changes from the original generic cloned repo.  EB will deploy the code based on the *latest committed code* in the local Git repo.
+  4. Run `eb init -r <region> -p "Node.js"` to initialize the folder for use with the CLI. Replace `<region>` with a region identifier such as `us-west-2` (see [Regions and Endpoints](https://docs.amazonaws.cn/en_us/general/latest/gr/rande.html#elasticbeanstalk_region) for a full list of region identifiers).
+  5. Run `eb create --instance_profile aws-elasticbeanstalk-ec2-role` to begin the creation of your environment.
      * Enter the environment name of your choice.
-     * Enter the CNAME prefix you want to use for this environment.  Instead of providing this CNAME to your end-users, you should provide the CloudFront URL for HTTPS connections that is provided in CloudFormation (see step 6).
+     * Enter the CNAME prefix you want to use for this environment.  Instead of providing this CNAME to your end-users, you should provide the CloudFront URL for HTTPS connections that is provided in CloudFormation (see step 7).
      * Note: The CLI will likely time out after 10 minutes due to the CloudFront distribution time to deploy, as well as the EB status will go severe for a few minutes before returning to ready.  This is normal and expected behavior.  To check on the deployment, you can run `eb events -f`.
-  5. After modifications to the source code, commit changes to git local repo (necessary to commit, not necessary to push), then run `eb deploy` to update the EB environment with the committed changes in your local git repo.
-  6. Find the CloudFormation Stack that Elastic Beanstalk sets up during deployment.  The 'Outputs' section will provide the CloudFront DNS name so your end-users will connect to the tool via HTTPS.  (Recommendation is to use a link shortening service like [Bit.ly](http://bit.ly) to create a more friendly URL for your end-users.)
+  6. After modifications to the source code, commit changes to git local repo (necessary to commit, not necessary to push), then run `eb deploy` to update the EB environment with the committed changes in your local git repo.
+  7. Find the CloudFormation Stack that Elastic Beanstalk sets up during deployment.  The 'Outputs' section will provide the CloudFront DNS name so your end-users will connect to the tool via HTTPS.  (Recommendation is to use a link shortening service like [Bit.ly](http://bit.ly) to create a more friendly URL for your end-users.)
 
 ## Deleting the EB environment via CLI
   1. Run `eb terminate --all` to clean up.  
