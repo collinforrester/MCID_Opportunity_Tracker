@@ -36,7 +36,7 @@ You will want to modify the source code for your event and your AWS environment.
 
 
 ## Deploy the application via EB CLI (Recommended)
-You can deploy the application using the following steps:
+You can deploy the application using the following steps.  Make sure you run the EB commands in the local Git repo folder:
   1. [Install the AWS Elastic Beanstalk Command Line Interface (CLI)](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html).
   2. Create an IAM Instance Profile named **aws-elasticbeanstalk-ec2-role** with the policy in [aws-elasticbeanstalk-ec2-role-policy.md](aws-elasticbeanstalk-ec2-role-policy.md). For more information on how to create an IAM Instance Profile, see [Create an IAM Instance Profile for Your Amazon EC2 Instances](https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-create-iam-instance-profile.html).
   3. Make sure you have at least made a local Git `git commit` of your code changes from the original generic cloned repo.  EB will deploy the code based on the *latest committed code* in the local Git repo.
