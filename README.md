@@ -21,6 +21,7 @@ You will want to modify the source code for your event and your AWS environment.
   1. (required) Modify '.ebextensions/options.config' file:
      * Row 3: Update your email to be notified via SNS when new items are added to the table.
      * Row 6: Update the SESSION value to identify the event name & date.  The SESSION variable is used in the website title as well as a field recorded in DynamoDB.
+     * Commit code changes to the local git repository.
   2. (optional) To further modify event information on the main web page (for example if the event is not an Immersion Day), modify the '/views/index.ejs' file:
      * Rows 9, 29, and 46 reference "Immersion Day"
   3. (optional) If you need to edit the data that is put into DynamoDB, the form data capture is configured in 'app.js' file.
@@ -36,7 +37,7 @@ You will want to modify the source code for your event and your AWS environment.
 
 
 ## Deploy the application via EB CLI (Recommended)
-You can deploy the application using the following steps.  Make sure you run the EB commands in the local Git repo folder:
+You can deploy the application using the following steps.  Make sure you run the EB commands in the local Git repo folder.
   1. [Install the AWS Elastic Beanstalk Command Line Interface (CLI)](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html).
   2. Create an IAM Instance Profile named **aws-elasticbeanstalk-ec2-role** with the policy in [aws-elasticbeanstalk-ec2-role-policy.md](aws-elasticbeanstalk-ec2-role-policy.md). For more information on how to create an IAM Instance Profile, see [Create an IAM Instance Profile for Your Amazon EC2 Instances](https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-create-iam-instance-profile.html).
   3. Make sure you have at least made a local Git `git commit` of your code changes from the original generic cloned repo.  EB will deploy the code based on the *latest committed code* in the local Git repo.
