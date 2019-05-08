@@ -1,4 +1,5 @@
 .DS_Store
+.gitignore
 
 # Elastic Beanstalk CLI Files
 .elasticbeanstalk/*
@@ -8,10 +9,3 @@
 
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/*
-
-
-
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
