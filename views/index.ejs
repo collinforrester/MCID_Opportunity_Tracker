@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>AWS </title>
+    <title>AWS</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<%= static_path + "/bootstrap/css/theme/" + theme + "/bootstrap.css" %>" rel="stylesheet">
@@ -26,7 +26,7 @@
           <li><a href="#">Blog</a></li>
           <li><a href="#">Press</a></li>
         </ul>    -->
-        <h3 class="text-muted">AWS Immersion Day <%= session %></h3>
+        <h3 class="text-muted"><%= session %></h3>
       </div>
 	  <% if (flask_debug === 'true') { %>
       <div class="alert alert-danger">
@@ -77,7 +77,7 @@
                    <input type="text" class="form-control" id="company" name="company" placeholder="Your company">
                  </div>
                  <div class="form-group">
-                   <label for="idea">What's your great idea?<font color="red"><sup> *</sup></font></label>
+                   <label for="idea">What can we help you with?<font color="red"><sup> *</sup></font></label>
                    <input type="text" class="form-control" id="idea" name="idea" placeholder="I want to build...">
                  </div>
              </div>
