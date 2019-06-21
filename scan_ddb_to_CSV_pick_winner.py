@@ -5,11 +5,14 @@ import json
 import random
 
 # Update the DynamoDB table information after it's created by Elastic Beanstalk
-ddb_table = 'awseb-e-7c68nzyeq7-stack-MCIDIdeasTable-PH0OQLXZC3RI'
+ddb_table = 'awseb-e-2zknm3vxyy-stack-MCIDIdeasTable-118YLCBRAY0E5'
 
 
 # Get access credentials for Dynamo
-ssmclient = boto3.client('ssm')
+ssmclient = boto3.client(
+    'ssm',
+    region_name='us-east-2'
+)
 ssmresponse = ssmclient.get_parameter(
     Name='DynamoDB_Reader_User_Creds',
     WithDecryption=True
@@ -25,7 +28,7 @@ ddbclient = boto3.client(
     'dynamodb',
     aws_access_key_id=ddb_access_key,
     aws_secret_access_key=ddb_secret_key,
-    region_name='us-east-1'
+    region_name='us-east-2'
     )
 
 ddbresponse = ddbclient.scan(TableName=ddb_table)

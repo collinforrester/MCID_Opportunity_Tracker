@@ -1,5 +1,12 @@
 .DS_Store
 
+# Pyhton virtualenv
+.Python
+bin
+include
+lib
+pip-selfcheck.json
+
 # Elastic Beanstalk CLI Files
 .elasticbeanstalk/*
 
